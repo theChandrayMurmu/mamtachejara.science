@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamta Chejara — Organic Chemistry &amp; Nanomedicine Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1B2D;
+    --ink-soft:#1B2A40;
+    --parchment:#F7F4EC;
+    --parchment-dim:#EFEADD;
+    --gold:#B98F2C;
+    --gold-bright:#D8AE4E;
+    --teal:#1B4B43;
+    --text:#182233;
+    --text-muted:#5B6472;
+    --line:#DCD5C4;
+    --line-dark:#2C3B52;
+    --display:'Newsreader', serif;
+    --body:'Inter', -apple-system, sans-serif;
+    --mono:'JetBrains Mono', monospace;
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    font-family:var(--body);
+    color:var(--text);
+    background:var(--parchment);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  /* ---------- Nanorod motif (signature element) ---------- */
+  .rod-motif{
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .rod-motif span{
+    display:block; width:22px; height:6px; border-radius:3px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-bright));
+  }
+  .rod-motif span:nth-child(2){width:12px; opacity:0.6;}
+  .rod-motif span:nth-child(3){width:7px; opacity:0.35;}
+
+  .divider-rods{
+    display:flex; align-items:center; gap:10px; margin:0 0 40px 0;
+  }
+  .divider-rods .rod{
+    height:5px; border-radius:3px;
+    background:linear-gradient(90deg, var(--gold), transparent);
+  }
+  .divider-rods .rod:nth-child(1){width:48px;}
+  .divider-rods .rod:nth-child(2){width:22px; opacity:0.6;}
+  .divider-rods .rod:nth-child(3){width:12px; opacity:0.35;}
+
+  /* ---------- Header / Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,244,236,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .nav-name{
+    font-family:var(--display); font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+  }
+  .nav-links{list-style:none; display:flex; gap:28px;}
+  .nav-links a{
+    font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;
+    text-decoration:none; color:var(--text-muted); font-weight:500;
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover{color:var(--gold);}
+  .nav-toggle{display:none;}
+
+  @media (max-width: 760px){
+    .nav-links{
+      position:absolute; top:64px; left:0; right:0;
+      flex-direction:column; background:var(--parchment);
+      border-bottom:1px solid var(--line);
+      padding:16px 32px; gap:16px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{
+      display:block; background:none; border:none; cursor:pointer;
+      font-family:var(--mono); font-size:0.85rem; color:var(--text);
+    }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 72px;
+    background:
+      radial-gradient(ellipse at 85% 10%, rgba(185,143,44,0.10), transparent 55%),
+      var(--parchment);
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1fr 220px;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--gold);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .hero-title{
+    margin-top:14px;
+    font-size:1.05rem;
+    color:var(--text-muted);
+    max-width:46ch;
+    line-height:1.55;
+  }
+  .hero-contact{
+    margin-top:26px;
+    display:flex; flex-wrap:wrap; gap:20px;
+    font-family:var(--mono); font-size:0.85rem;
+  }
+  .hero-contact a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .hero-contact a:hover{border-color:var(--gold); color:var(--gold);}
+
+  .portrait{
+    position:relative;
+    width:200px; height:200px;
+    justify-self:end;
+  }
+  .portrait-ring{
+    position:absolute; inset:-14px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    opacity:0.45;
+  }
+  .portrait-ring::before, .portrait-ring::after{
+    content:''; position:absolute; width:8px; height:8px; border-radius:50%;
+    background:var(--gold);
+  }
+  .portrait-ring::before{top:-4px; left:50%; transform:translateX(-50%);}
+  .portrait-ring::after{bottom:-4px; left:50%; transform:translateX(-50%);}
+  .portrait-frame{
+    width:100%; height:100%; border-radius:50%;
+    background:linear-gradient(155deg, var(--ink), var(--ink-soft));
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    box-shadow:0 12px 30px -10px rgba(15,27,45,0.35);
+  }
+  .portrait-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .portrait-monogram{
+    font-family:var(--display); font-size:3.2rem; color:var(--gold-bright);
+    font-weight:500;
+  }
+
+  @media (max-width: 760px){
+    .hero .wrap{grid-template-columns:1fr; text-align:left;}
+    .portrait{justify-self:start; width:140px; height:140px;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:64px 0;}
+  section.alt{background:var(--parchment-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:12px;
+  }
+  .section-num{
+    font-family:var(--mono); font-size:0.78rem; color:var(--gold); letter-spacing:0.06em;
+  }
+  h2{
+    font-family:var(--display); font-weight:600;
+    font-size:1.7rem; color:var(--ink);
+  }
+
+  /* ---------- Research Profile ---------- */
+  .profile-text{
+    max-width:74ch;
+    font-size:1.04rem;
+    color:var(--text);
+  }
+
+  /* ---------- Dark band (Research Experience) ---------- */
+  .band-dark{
+    background:var(--ink); color:var(--parchment);
+  }
+  .band-dark h2{color:var(--parchment);}
+  .band-dark .section-num{color:var(--gold-bright);}
+  .band-dark .divider-rods .rod{background:linear-gradient(90deg, var(--gold-bright), transparent);}
+
+  /* ---------- Education table ---------- */
+  .edu-table{width:100%; border-collapse:collapse; margin-top:20px;}
+  .edu-table th{
+    text-align:left; font-family:var(--mono); font-size:0.72rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted);
+    padding:10px 16px 10px 0; border-bottom:1px solid var(--ink);
+    font-weight:500;
+  }
+  .edu-table td{
+    padding:16px 16px 16px 0; border-bottom:1px solid var(--line);
+    vertical-align:top; font-size:0.95rem;
+  }
+  .edu-table td.degree{font-family:var(--display); font-size:1.05rem; color:var(--ink);}
+  .edu-table td.gpa{font-family:var(--mono); color:var(--gold); white-space:nowrap;}
+  @media (max-width:640px){
+    .edu-table thead{display:none;}
+    .edu-table tr{display:block; border-bottom:1px solid var(--line); padding:16px 0;}
+    .edu-table td{display:block; border:none; padding:3px 0;}
+    .edu-table td.gpa::before{content:'GPA · '; font-size:0.75rem; color:var(--text-muted);}
+    .edu-table td:nth-child(3)::before{content:'Institution · '; font-size:0.75rem; color:var(--text-muted);}
+    .edu-table td:nth-child(2)::before{content:'Duration · '; font-size:0.75rem; color:var(--text-muted);}
+  }
+
+  /* ---------- Publications ---------- */
+  .pub-list{list-style:none; margin-top:20px; display:flex; flex-direction:column; gap:22px;}
+  .pub{
+    padding:20px 24px; background:var(--parchment); border:1px solid var(--line);
+    border-left:3px solid var(--gold); border-radius:2px;
+  }
+  .pub-cite{font-size:0.98rem; color:var(--text);}
+  .pub-journal{font-style:italic; color:var(--teal);}
+  .pub a{
+    display:inline-block; margin-top:8px; font-family:var(--mono); font-size:0.8rem;
+    color:var(--gold); text-decoration:none; border-bottom:1px solid transparent;
+  }
+  .pub a:hover{border-color:var(--gold);}
+
+  /* ---------- Experience ---------- */
+  .exp-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:20px;}
+  @media (max-width:760px){.exp-grid{grid-template-columns:1fr;}}
+  .exp-card h3{
+    font-family:var(--display); font-size:1.15rem; font-weight:600; color:var(--ink);
+    margin-bottom:4px;
+  }
+  .band-dark .exp-card h3{color:var(--parchment);}
+  .exp-role{
+    font-family:var(--mono); font-size:0.78rem; color:var(--gold);
+    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;
+  }
+  .band-dark .exp-role{color:var(--gold-bright);}
+  .exp-card ul{padding-left:18px; display:flex; flex-direction:column; gap:8px;}
+  .exp-card li{font-size:0.94rem;}
+  .band-dark .exp-card li{color:#D9DEE7;}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:24px;}
+  @media (max-width:760px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-card{
+    background:var(--parchment); border:1px solid var(--line); padding:24px;
+  }
+  .skill-card h3{
+    font-family:var(--mono); font-size:0.78rem; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--gold); margin-bottom:14px;
+    padding-bottom:12px; border-bottom:1px solid var(--line);
+  }
+  .skill-card ul{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .skill-card li{font-size:0.92rem; padding-left:16px; position:relative;}
+  .skill-card li::before{
+    content:''; position:absolute; left:0; top:9px; width:6px; height:2px;
+    background:var(--gold);
+  }
+
+  /* ---------- Instrumentation ---------- */
+  .instr-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); margin-top:24px;
+  }
+  @media (max-width:760px){.instr-grid{grid-template-columns:repeat(2,1fr);}}
+  .instr-cell{
+    background:var(--parchment); padding:20px 16px;
+    font-family:var(--mono); font-size:0.85rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .instr-cell::before{content:'◆'; color:var(--gold); font-size:0.6rem;}
+
+  /* ---------- Software chips ---------- */
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+  .chip{
+    font-family:var(--mono); font-size:0.82rem; padding:8px 16px;
+    border:1px solid var(--gold); border-radius:20px; color:var(--ink);
+    background:rgba(185,143,44,0.06);
+  }
+
+  /* ---------- Research interests ---------- */
+  .interest-list{
+    columns:2; column-gap:40px; margin-top:20px; max-width:800px;
+  }
+  @media (max-width:640px){.interest-list{columns:1;}}
+  .interest-list li{
+    list-style:none; font-size:0.96rem; padding:9px 0 9px 20px;
+    border-bottom:1px solid var(--line); position:relative; break-inside:avoid;
+  }
+  .interest-list li::before{
+    content:''; position:absolute; left:0; top:16px; width:9px; height:3px;
+    background:var(--gold);
+  }
+
+  /* ---------- References ---------- */
+  .ref-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:24px;}
+  @media (max-width:760px){.ref-grid{grid-template-columns:1fr;}}
+  .ref-card{padding:22px; border:1px solid var(--line); background:var(--parchment-dim);}
+  .ref-card h3{font-family:var(--display); font-size:1.05rem; color:var(--ink); margin-bottom:2px;}
+  .ref-role{font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;}
+  .ref-card p{font-family:var(--mono); font-size:0.78rem; color:var(--teal); word-break:break-word;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink); color:var(--parchment); padding:36px 0;
+    text-align:center; font-size:0.82rem; color:#9CA7B8;
+  }
+  footer .rod-motif{justify-content:center; margin-bottom:14px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="nav-name">Mamta Chejara</div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">MENU</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#references">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="rod-motif"><span></span><span></span><span></span></span> Research Profile</div>
+      <h1>Mamta Chejara</h1>
+      <p class="hero-title">Ph.D. in Convergence Science · Organic Chemistry · Nanomedicine · Chemical Biology</p>
+      <div class="hero-contact">
+        <a href="mailto:chejaramamta74@gmail.com">chejaramamta74@gmail.com</a>
+        <a href="tel:+917219139851">+91 7219139851</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="portrait-ring" aria-hidden="true"></div>
+      <div class="portrait-frame">
+        <!-- Replace the src below with your photo, e.g. "images/mamta-chejara.jpg" -->
+        <img src="images/mamta-chejara.jpg" alt="Portrait of Mamta Chejara" onerror="this.style.display='none'; this.parentElement.querySelector('.portrait-monogram').style.display='flex';">
+        <span class="portrait-monogram" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">MC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">01</span><h2>Research Profile</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <p class="profile-text">
+      Organic chemistry researcher with a Ph.D. in Convergence Science from Sahmyook University, South Korea, and an M.Sc. in Organic Chemistry from Fergusson College, India. Research experience focused on enzyme-selective nanoparticle-based probes for cancer-related applications, particularly fibroblast activation protein (FAP) targeting. Experienced in functionalized gold nanomaterials, fluorescent molecular probes, PEGylation strategies, enzyme-selectivity studies, fluorescence-based assays, cellular evaluation, and nanomaterial characterization.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">02</span><h2>Education</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <table class="edu-table">
+      <thead>
+        <tr><th>Course</th><th>Duration</th><th>University</th><th>GPA</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="degree">Ph.D. in Convergence Science</td>
+          <td>March 2020 – Feb 2025</td>
+          <td>Sahmyook University, Seoul, South Korea</td>
+          <td class="gpa">4.5 / 4.5</td>
+        </tr>
+        <tr>
+          <td class="degree">M.Sc. in Organic Chemistry</td>
+          <td>2016 – 2018</td>
+          <td>Fergusson College, Pune, India</td>
+          <td class="gpa">9.18 / 10</td>
+        </tr>
+        <tr>
+          <td class="degree">B.Sc. in Chemistry</td>
+          <td>2013 – 2016</td>
+          <td>Modern College, Pune, India</td>
+          <td class="gpa">76 / 100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">03</span><h2>Publications</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <ul class="pub-list">
+      <li class="pub">
+        <p class="pub-cite">Kim, K., Chejara, M. R., Yoon, B., &amp; Park, M. (2024). Gold nanorod-based smart platform for efficient cellular uptake and combination therapy. <span class="pub-journal">RSC Advances</span>, 14(37), 27385–27393.</p>
+        <a href="https://doi.org/10.1039/d4ra06051b" target="_blank" rel="noopener">doi.org/10.1039/d4ra06051b →</a>
+      </li>
+      <li class="pub">
+        <p class="pub-cite">Singh, B., Chejara, M. R., &amp; Park, M. (2023). Light-Responsive Layer-By-Layer Film Containing Gold Nanorods for Sequential Drug Release. <span class="pub-journal">ACS Omega</span>, 8(50), 48405–48412.</p>
+        <a href="https://doi.org/10.1021/acsomega.3c08009" target="_blank" rel="noopener">doi.org/10.1021/acsomega.3c08009 →</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">04</span><h2>Professional Experience</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <h3>Takeo Adventist School, Cambodia</h3>
+        <div class="exp-role">Teacher</div>
+        <ul>
+          <li>Teaching chemistry and English.</li>
+          <li>Supporting laboratory-based chemistry education and practical learning.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <h3>Toxicology and Environmental Health Sciences</h3>
+        <div class="exp-role">Peer Reviewer</div>
+        <ul>
+          <li>Reviewer for scientific manuscripts in toxicology and environmental health.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark" id="research-experience">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">05</span><h2>Research Experience</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="exp-card">
+      <h3>Sahmyook University</h3>
+      <div class="exp-role">Ph.D. Researcher</div>
+      <ul>
+        <li>Developed enzyme-selective nanoparticle-based probes targeting FAP for cancer diagnostic applications.</li>
+        <li>Designed and functionalized gold nanoparticles and gold nanorods for biomedical applications.</li>
+        <li>Investigated selectivity between FAP, DPP-4, and PREP.</li>
+        <li>Developed PEGylated nanoparticle systems and evaluated their biological performance.</li>
+        <li>Investigated cellular uptake and biocompatibility using U87MG and HaCaT cell models.</li>
+        <li>Applied fluorescence-based assays and confocal microscopy for biological evaluation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">06</span><h2>Research &amp; Technical Skills</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Organic Chemistry &amp; Molecular Design</h3>
+        <ul>
+          <li>Organic chemistry and molecular structure design</li>
+          <li>Peptide-based ligand design and SAR considerations</li>
+          <li>Enzyme-selective ligand/probe development</li>
+          <li>ChemDraw for molecular structure representation and ligand design</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Nanomaterials &amp; Nanomedicine</h3>
+        <ul>
+          <li>Gold nanoparticles (GNPs) and gold nanorods (GNRs)</li>
+          <li>Nanoparticle surface functionalization and PEGylation</li>
+          <li>Nanoparticle-based molecular probes</li>
+          <li>Biomedical imaging and drug-delivery applications</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Biological &amp; Enzyme Studies</h3>
+        <ul>
+          <li>FAP, DPP-4 and PREP selectivity studies</li>
+          <li>Fluorescence-based assays and cellular uptake studies</li>
+          <li>Cell-based biocompatibility evaluation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="instrumentation">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">07</span><h2>Instrumentation</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="instr-grid">
+      <div class="instr-cell">NMR</div>
+      <div class="instr-cell">UV-Visible Spectroscopy</div>
+      <div class="instr-cell">Fluorescence Spectroscopy</div>
+      <div class="instr-cell">FT-IR</div>
+      <div class="instr-cell">Dynamic Light Scattering (DLS)</div>
+      <div class="instr-cell">Confocal Laser Scanning Microscopy (CLSM)</div>
+      <div class="instr-cell">NIR Techniques</div>
+      <div class="instr-cell">Cell Culture Equipment</div>
+    </div>
+  </div>
+</section>
+
+<section id="software">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">08</span><h2>Scientific Software</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="chip-row">
+      <span class="chip">ChemDraw</span>
+      <span class="chip">Origin</span>
+      <span class="chip">Microsoft Excel</span>
+      <span class="chip">ImageJ</span>
+      <span class="chip">SciFinder</span>
+      <span class="chip">Web of Science</span>
+      <span class="chip">Microsoft Word</span>
+      <span class="chip">PowerPoint</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="interests">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">09</span><h2>Research Interests</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <ul class="interest-list">
+      <li>Organic synthesis and functional molecule development</li>
+      <li>Medicinal chemistry and chemical biology</li>
+      <li>Enzyme-selective molecular probes</li>
+      <li>FAP-targeted cancer diagnostics</li>
+      <li>Functionalized nanomaterials for biomedical applications</li>
+      <li>Fluorescence-based molecular imaging</li>
+      <li>Nanomedicine and targeted drug delivery</li>
+      <li>Enzyme-substrate selectivity in tumor microenvironments</li>
+      <li>Structure–activity relationships of peptide-based ligands</li>
+    </ul>
+  </div>
+</section>
+
+<section id="references">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">10</span><h2>References</h2></div>
+    <div class="divider-rods"><div class="rod"></div><div class="rod"></div><div class="rod"></div></div>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <h3>Dr. Baljinder Singh</h3>
+        <div class="ref-role">Assistant Professor</div>
+        <p>vishalmasih94@gmail.com</p>
+        <p>+82 10 6603 1994</p>
+      </div>
+      <div class="ref-card">
+        <h3>Prof. Danille Etter</h3>
+        <div class="ref-role">Sahmyook University</div>
+        <p>detter@syu.ac.kr</p>
+        <p>+82 10 4632 5064</p>
+      </div>
+      <div class="ref-card">
+        <h3>Prof. Rosemarie Shin</h3>
+        <div class="ref-role">Sahmyook University</div>
+        <p>eveleaves@gmail.com</p>
+        <p>+82 10 6830 2610</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="rod-motif"><span></span><span></span><span></span></span>
+    <p>&copy; <span id="year"></span> Mamta Chejara — Organic Chemistry · Nanomedicine · Chemical Biology</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>

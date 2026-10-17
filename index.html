@@ -408,6 +408,12 @@
     color: var(--gold-bright);
   }
 
+  .drawer-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   .drawer-close {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
@@ -1917,14 +1923,41 @@
   }
 
   @media (max-width: 768px) {
+    .wrap {
+      padding: 0 20px;
+    }
+    nav.wrap {
+      height: 60px;
+      gap: 12px;
+    }
+    .brand {
+      gap: 0;
+    }
+    .brand-icon {
+      display: none !important;
+    }
+    .brand-sub {
+      display: none !important;
+    }
+    .brand-text h1.brand-name {
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+    .nav-hamburger {
+      display: inline-flex !important;
+      padding: 8px 14px;
+    }
     .hero-stats {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  @media (max-width: 420px) {
     .nav-hamburger .hamburger-label {
       display: none;
     }
     .nav-hamburger {
-      padding: 9px 12px;
+      padding: 8px 12px;
     }
   }
 
@@ -1958,31 +1991,6 @@
     </a>
 
     <div class="nav-actions">
-      <!-- Laboratory Theme Toggle -->
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Laboratory Light/Dark Mode" title="Toggle Theme">
-        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-      </button>
-
-      <!-- Academic CV Link -->
-      <a href="Mamta_Chejara_academic%20CV.pdf" target="_blank" class="nav-btn-cv" title="Download Academic CV (PDF)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>CV (PDF)</span>
-      </a>
-
       <!-- Hamburger Menu Button -->
       <button class="nav-hamburger" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open Navigation Menu">
         <span class="hamburger-box" aria-hidden="true">
@@ -2005,12 +2013,28 @@
         <div class="drawer-brand-sub">Dr. Mamta Chejara, Ph.D.</div>
       </div>
     </div>
-    <button class="drawer-close" id="drawerClose" aria-label="Close Navigation Menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
+    <div class="drawer-header-actions">
+      <!-- Laboratory Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Laboratory Light/Dark Mode" title="Toggle Theme">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <button class="drawer-close" id="drawerClose" aria-label="Close Navigation Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <div class="drawer-body">
